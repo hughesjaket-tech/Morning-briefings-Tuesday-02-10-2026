@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tuesday Morning Game Plan | February 10, 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.5.0/mermaid.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --border: #e2e8f0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .accent-gradient {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+        }
+        
+        .toc-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            z-index: 50;
+            overflow-y: auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+        }
+        
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+        }
+        
+        .toc-link:hover, .toc-link.active {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            background: rgba(245, 158, 11, 0.05);
+        }
+        
+        .toc-link.sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding-left: 2rem;
+        }
+        
+        .hero-section {
+            height: 70vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 1.5rem;
+            height: 100%;
+        }
+        
+        .bento-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .bento-hero {
+            grid-row: 1 / -1;
+        }
+        
+        .chart-container {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .insight-highlight {
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .citation {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .citation:hover {
+            text-decoration: underline;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border) 50%, transparent 100%);
+            margin: 4rem 0;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .metric-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+        
+        .mermaid-container {
+            display: flex;
+            justify-content: center;
+            min-height: 300px;
+            max-height: 800px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mermaid-container .mermaid {
+            width: 100%;
+            max-width: 100%;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .mermaid-container .mermaid svg {
+            max-width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .mermaid-container .mermaid:active {
+            cursor: grabbing;
+        }
+
+        .mermaid-container.zoomed .mermaid {
+            height: 100%;
+            width: 100%;
+            cursor: grab;
+        }
+
+        .mermaid-controls {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            gap: 10px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid-control-btn {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-primary);
+            font-size: 14px;
+            min-width: 36px;
+            height: 36px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mermaid-control-btn:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .mermaid-control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .mermaid .node rect {
+            fill: var(--bg-primary) !important;
+            stroke: var(--accent) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node circle {
+            fill: var(--bg-primary) !important;
+            stroke: var(--accent) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node ellipse {
+            fill: var(--bg-primary) !important;
+            stroke: var(--accent) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node polygon {
+            fill: var(--bg-primary) !important;
+            stroke: var(--accent) !important;
+            stroke-width: 2px !important;
+        }
+        
+        .mermaid .node .label {
+            color: var(--text-primary) !important;
+            font-weight: 600 !important;
+            font-size: 14px !important;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .mermaid .edgePath .path {
+            stroke: var(--text-secondary) !important;
+            stroke-width: 2px !important;
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+        }
+        
+        .mermaid .edgeLabel {
+            background-color: var(--bg-primary) !important;
+            color: var(--text-primary) !important;
+            font-weight: 500 !important;
+            border: 1px solid var(--border) !important;
+            border-radius: 4px !important;
+            padding: 2px 6px !important;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        .mermaid .cluster rect {
+            fill: var(--bg-secondary) !important;
+            stroke: var(--text-secondary) !important;
+            stroke-width: 1px !important;
+            stroke-dasharray: 5,5 !important;
+        }
+        
+        .mermaid .node.primary rect {
+            fill: var(--accent) !important;
+        }
+        
+        .mermaid .node.primary .label {
+            color: white !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mermaid .node.secondary rect {
+            fill: var(--text-secondary) !important;
+        }
+        
+        .mermaid .node.secondary .label {
+            color: white !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mermaid .node.warning rect {
+            fill: #ef4444 !important;
+        }
+        
+        .mermaid .node.warning .label {
+            color: white !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mermaid .node.success rect {
+            fill: #10b981 !important;
+        }
+        
+        .mermaid .node.success .label {
+            color: white !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .toc-fixed {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .bento-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .bento-item {
+                padding: 1rem;
+            }
+            .hero-section {
+                height: auto;
+                min-height: 50vh;
+            }
+            .bento-item h1 {
+                font-size: 2.5rem;
+            }
+            .bento-item p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .bento-item h1 {
+                font-size: 2rem;
+            }
+            .mermaid-container {
+                padding: 1rem;
+            }
+            .mermaid-controls {
+                top: auto;
+                bottom: 15px;
+                right: 15px;
+            }
+            .bento-item {
+                word-wrap: break-word;
+            }
+        }
+    </style>
+  <base target="_blank">
+</head>
+
+<body class="bg-gray-50">
+    <!-- Fixed Table of Contents -->
+    <nav class="toc-fixed">
+      <div class="mb-8">
+        <h3 class="serif font-bold text-lg text-gray-900 mb-4">Market Game Plan</h3>
+        <div class="text-sm text-gray-600">February 10, 2026</div>
+      </div>
+
+      <div class="space-y-1">
+        <a href="#executive-summary" class="toc-link">Executive Summary</a>
+        <a href="#market-vibe" class="toc-link">1. Market Vibe</a>
+        <a href="#yesterday-recap" class="toc-link">2. Yesterday's Impact</a>
+        <a href="#retail-sales" class="toc-link">3. Retail Sales Pivot</a>
+        <a href="#critical-ratios" class="toc-link">4. Critical Ratios</a>
+        <a href="#key-levels" class="toc-link">5. Key Levels</a>
+        <a href="#fed-speak" class="toc-link">6. Fed Speak Today</a>
+        <a href="#trade-setups" class="toc-link">7. Trade Setups</a>
+        <a href="#scenario-matrix" class="toc-link">8. Scenario Matrix</a>
+        <a href="#bottom-line" class="toc-link">9. Bottom Line</a>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-gray-200">
+        <div class="text-xs text-gray-500 space-y-2">
+          <div><i class="fas fa-clock mr-2"></i>Pre-Market Session</div>
+          <div><i class="fas fa-chart-line mr-2"></i>ES / Gold / Silver Focus</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section hero-gradient relative">
+        <div class="absolute inset-0 opacity-20">
+          <div class="w-full h-full bg-gradient-to-br from-amber-900/40 to-slate-900/60"></div>
+        </div>
+
+        <div class="relative z-10 container mx-auto px-8 h-full flex items-center">
+          <div class="bento-grid w-full max-w-6xl">
+            <!-- Hero Content -->
+            <div class="bento-item bento-hero">
+              <h1 class="serif text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+                <em>Tuesday Morning</em>
+                <br/>
+                <span class="text-3xl lg:text-4xl font-normal opacity-90">Game Plan</span>
+              </h1>
+              <p class="text-xl text-gray-200 mb-8 leading-relaxed">
+                Markets digest flat retail sales expectations while silver cools from $83.75 spike. Gold holds $5,075 after testing $5,100 overnight. VIX waking up from complacency at 17.45. The 8:30 AM data drop is the catalyst.
+              </p>
+              <div class="flex items-center space-x-6 text-gray-300">
+                <div class="flex items-center">
+                  <i class="fas fa-calendar-alt mr-2"></i>
+                  <span>February 10, 2026</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-clock mr-2"></i>
+                  <span>Pre-Market</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="bento-item">
+              <h3 class="serif text-xl font-semibold text-white mb-4">Silver Cooldown</h3>
+              <div class="text-3xl font-bold text-white mb-2">$81.58</div>
+              <div class="text-sm text-gray-300">Cooled from $83.75 highs</div>
+              <div class="mt-3 text-xs text-gray-400">-0.74% overnight | Volatility compression</div>
+            </div>
+
+            <div class="bento-item">
+              <h3 class="serif text-xl font-semibold text-white mb-4">E-Mini S&P</h3>
+              <div class="text-3xl font-bold text-white mb-2">6,985.25</div>
+              <div class="text-sm text-gray-300">Stalled at 7,000 wall</div>
+              <div class="mt-3 text-xs text-gray-400">-0.01% | Waiting for retail sales</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Executive Summary -->
+      <section id="executive-summary" class="container mx-auto px-8 py-12">
+        <div class="max-w-4xl">
+          <h2 class="serif text-3xl font-bold text-gray-900 mb-6">Executive Summary</h2>
+
+          <div class="bg-white border border-gray-200 rounded-lg p-6 mb-8">
+            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+              <span class="insight-highlight">Markets enter Tuesday in a holding pattern</span>—digesting yesterday's Fed speak while positioning for 8:30 AM retail sales data. Silver has cooled from meme highs but holds above $80 critical support. Gold tested $5,100 overnight but backed off. S&P 500 stalled at 7,000 psychological resistance with VIX climbing back to 17.45, suggesting complacency is fading.
+            </p>
+
+            <div class="grid-2 mt-6">
+              <div class="metric-card">
+                <div class="metric-value">62.2</div>
+                <div class="metric-label">Gold/Silver Ratio</div>
+                <div class="text-sm text-gray-600 mt-2">Silver still leading; cooling not crashing</div>
+              </div>
+
+              <div class="metric-card">
+                <div class="metric-value">0.00250</div>
+                <div class="metric-label">VIX/S&P Ratio</div>
+                <div class="text-sm text-gray-600 mt-2">Fear returning; complacency ending</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-exclamation-triangle mr-2"></i>Critical Event Alert
+            </h4>
+            <p class="text-amber-700">
+              <strong>8:30 AM Retail Sales:</strong> Flat expectations (0.0% m/m) with risk of disappointment. Watch tight stops at ES 6,970 / Silver $80.50. Hawkish data surprise could break the 7,000 wall rejection and trigger VIX spike above 18.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 1: Market Vibe -->
+      <section id="market-vibe" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">1. Market Vibe: Data-Dependent Pause</h2>
+
+          <div class="grid-2 mb-8">
+            <div>
+              <h3 class="serif text-2xl font-semibold text-gray-800 mb-4">Core Sentiment: Waiting for the Print</h3>
+              <p class="text-gray-700 mb-4">
+                The market environment entering Tuesday is characterized by <span class="insight-highlight">cautious equilibrium as traders position for the 8:30 AM retail sales release</span>. This follows Monday's Fed speak which provided no clear directional catalyst.
+              </p>
+              <p class="text-gray-700">
+                The key dynamic is the contrast between <strong>softening consumer data</strong> (retail sales flat, consumer sentiment down) and <strong>resilient labor markets</strong> (ADP strong, jobless claims low). This tension creates binary outcomes around today's data.
+              </p>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-gray-800 mb-4">Overnight Price Action</h4>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                  <span class="text-sm text-gray-700">Silver</span>
+                  <span class="text-sm font-semibold text-red-600">$81.58 (-0.74%)</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                  <span class="text-sm text-gray-700">Gold</span>
+                  <span class="text-sm font-semibold text-red-600">$5,075.90 (-0.07%)</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                  <span class="text-sm text-gray-700">E-mini S&P</span>
+                  <span class="text-sm font-semibold text-red-600">6,985.25 (-0.01%)</span>
+                </div>
+                <div class="flex justify-between items-center py-2 bg-amber-50">
+                  <span class="text-sm font-semibold text-amber-800">VIX</span>
+                  <span class="text-sm font-semibold text-amber-800">17.45 (+0.52%)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <h4 class="serif text-xl font-semibold text-gray-800 mb-4">Silver's Volatility Compression</h4>
+            <div class="grid-2">
+              <div>
+                <div class="text-lg font-semibold text-gray-800">Price Action</div>
+                <div class="text-sm text-gray-600 mb-3">Overnight High to Current</div>
+                <div class="text-2xl font-bold text-blue-600">$83.75 → $81.58</div>
+                <div class="text-xs text-gray-500">$2.17 pullback from highs (-2.6%)</div>
+              </div>
+              <div>
+                <div class="text-lg font-semibold text-gray-800">Key Context</div>
+                <div class="text-sm text-gray-600 mb-3">Support Test</div>
+                <div class="text-2xl font-bold text-amber-600">$80.50</div>
+                <div class="text-xs text-gray-500">Critical support; below = liquidation</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 text-white rounded-lg p-6 mt-8">
+            <h4 class="serif text-xl font-semibold mb-4">
+              <i class="fas fa-key mr-2 text-amber-400"></i>Key Word: Data-Dependent
+            </h4>
+            <p class="text-gray-200 leading-relaxed">
+              In Fed terminology, <span class="insight-highlight">data-dependent describes policy that reacts to incoming economic prints rather than following a predetermined path</span>. Today's retail sales is the first major data point since Friday's jobs report and will set the tone for Fed expectations heading into tomorrow's CPI.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 2: Yesterday's Impact -->
+      <section id="yesterday-recap" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">2. Yesterday's Impact: Fed Speak Fades</h2>
+
+          <div class="chart-container">
+            <h4 class="serif text-xl font-semibold text-gray-800 mb-6">Monday's Close → Tuesday's Setup</h4>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-4 py-3 text-left font-semibold">Asset</th>
+                    <th class="px-4 py-3 text-right font-semibold">Monday Close</th>
+                    <th class="px-4 py-3 text-right font-semibold">Overnight</th>
+                    <th class="px-4 py-3 text-left font-semibold">Impact on Today</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-blue-600">Silver (SIH6)</td>
+                    <td class="px-4 py-3 text-right font-semibold">$82.24</td>
+                    <td class="px-4 py-3 text-right font-semibold text-red-600">$81.58</td>
+                    <td class="px-4 py-3 text-gray-600">Profit-taking from $83.75; testing $80.50 support</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-yellow-600">Gold (GCJ6)</td>
+                    <td class="px-4 py-3 text-right font-semibold">$5,077.40</td>
+                    <td class="px-4 py-3 text-right font-semibold text-red-600">$5,075.90</td>
+                    <td class="px-4 py-3 text-gray-600">Tested $5,100, rejected; safe-haven bid fading</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-orange-600">E-mini S&P (ESH6)</td>
+                    <td class="px-4 py-3 text-right font-semibold">6,985.50</td>
+                    <td class="px-4 py-3 text-right font-semibold text-red-600">6,985.25</td>
+                    <td class="px-4 py-3 text-gray-600">Stalled at 7,000; waiting for retail sales catalyst</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 bg-amber-50">
+                    <td class="px-4 py-3 font-medium text-purple-600">VIX</td>
+                    <td class="px-4 py-3 text-right font-semibold">17.36</td>
+                    <td class="px-4 py-3 text-right font-semibold text-amber-600">17.45</td>
+                    <td class="px-4 py-3 text-gray-600">Waking from complacency; pricing event risk</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="grid-2 mt-8">
+            <div>
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">What Changed Overnight</h4>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-down text-red-500 mr-3 mt-1"></i>
+                  <span><strong>Silver rejected $83.75</strong> — meme momentum fading, profit-taking active</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-arrow-up text-amber-500 mr-3 mt-1"></i>
+                  <span><strong>VIX climbing</strong> — market pricing 8:30 AM volatility, complacency ending</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-minus text-gray-500 mr-3 mt-1"></i>
+                  <span><strong>Gold $5,100 test failed</strong> — safe-haven bid not strong enough</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">What Stayed the Same</h4>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                  <span><strong>S&P 7,000 wall</strong> — resistance holding, needs catalyst to break</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                  <span><strong>Dollar strength</strong> — DXY near highs, pressuring commodities</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                  <span><strong>Fed uncertainty</strong> — no clear signal from yesterday's speakers</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 3: Retail Sales Pivot -->
+      <section id="retail-sales" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">3. The Retail Sales Pivot: 8:30 AM Catalyst</h2>
+
+          <div class="grid-2 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">
+                <i class="fas fa-shopping-cart mr-2 text-amber-600"></i>Core Retail Sales m/m
+              </h4>
+              <div class="text-center mb-4">
+                <div class="text-3xl font-bold text-amber-600">0.0%</div>
+                <div class="text-sm text-gray-600">Expected</div>
+                <div class="text-xs text-gray-500 mt-1">Prior: 0.3%</div>
+              </div>
+              <div class="text-sm text-gray-700">
+                <span class="insight-highlight">Flat expectations</span> suggest consumer spending stagnation. Any negative print amplifies recession fears; positive surprise reignites soft landing narrative.
+              </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">
+                <i class="fas fa-users mr-2 text-blue-600"></i>Retail Sales m/m
+              </h4>
+              <div class="text-center mb-4">
+                <div class="text-3xl font-bold text-blue-600">0.0%</div>
+                <div class="text-sm text-gray-600">Expected</div>
+                <div class="text-xs text-gray-500 mt-1">Prior: 0.4%</div>
+              </div>
+              <div class="text-sm text-gray-700">
+                Headline number includes volatile auto/gas components. <span class="insight-highlight">Core number matters more</span> for Fed policy implications.
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <h4 class="serif text-xl font-semibold text-gray-800 mb-6">Retail Sales Scenario Matrix</h4>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-4 py-3 text-left font-semibold">Scenario</th>
+                    <th class="px-4 py-3 text-left font-semibold">Core Retail Sales</th>
+                    <th class="px-4 py-3 text-left font-semibold">Market Impact</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr class="hover:bg-gray-50 bg-red-50">
+                    <td class="px-4 py-3 font-medium text-red-600">Weak Data</td>
+                    <td class="px-4 py-3">Below -0.2%</td>
+                    <td class="px-4 py-3 font-semibold">
+                      <strong>Recession fear spike</strong>
+                      <br/>
+                      ES drops to 6,950; Gold rallies to $5,120; VIX spikes 18+
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-yellow-600">Soft Landing</td>
+                    <td class="px-4 py-3">0.0% to +0.2%</td>
+                    <td class="px-4 py-3">
+                      <strong>Goldilocks</strong>
+                      <br/>
+                      ES grinds to 7,000; Commodities stable; VIX compresses
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 bg-green-50">
+                    <td class="px-4 py-3 font-medium text-green-600">Strong Data</td>
+                    <td class="px-4 py-3">Above +0.3%</td>
+                    <td class="px-4 py-3">
+                      <strong>Hawkish Fed fear</strong>
+                      <br/>
+                      ES rallies then fades; Dollar spikes; Gold drops to $5,050
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="bg-amber-900 text-white rounded-lg p-6 mt-8">
+            <h4 class="serif text-xl font-semibold mb-4">
+              <i class="fas fa-exclamation-triangle mr-2 text-yellow-300"></i>Asymmetric Risk: Flat Expectations = Binary Outcomes
+            </h4>
+            <p class="text-amber-100 leading-relaxed">
+              The market's positioning into this data release—<span class="insight-highlight">long commodities, long equities, short vol</span>—creates asymmetric exposure where weak data triggers forced liquidations while strong data generates only modest additional gains (hawkish Fed fear).
+            </p>
+
+            <div class="grid-2 mt-6">
+              <div>
+                <div class="text-sm font-semibold text-green-200 mb-2">Weak Data Reward</div>
+                <ul class="text-amber-100 text-sm space-y-1">
+                  <li>• Gold spikes to $5,120 (+0.9%)</li>
+                  <li>• Silver retests $83 (+1.7%)</li>
+                  <li>• ES initial drop then rally</li>
+                  <li>• VIX spike to 18-19</li>
+                </ul>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-red-300 mb-2">Strong Data Risk</div>
+                <ul class="text-amber-100 text-sm space-y-1">
+                  <li>• Gold drops to $5,050 (-0.5%)</li>
+                  <li>• Silver breaks $80 (-2.0%)</li>
+                  <li>• ES fades from 7,000</li>
+                  <li>• Dollar spike pressures commodities</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 4: Critical Ratios -->
+      <section id="critical-ratios" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">4. Critical Ratios to Watch</h2>
+
+          <div class="grid-2 mb-8">
+            <div class="chart-container">
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-6">Gold/Silver Ratio — Silver Cooling</h4>
+
+              <div class="text-center mb-6">
+                <div class="text-4xl font-bold text-amber-600 mb-2">62.2</div>
+                <div class="text-sm text-gray-600">Current Ratio Level</div>
+                <div class="text-xs text-gray-500 mt-1">Up from 61.6 yesterday</div>
+              </div>
+
+              <div class="space-y-3">
+                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                  <span class="text-sm text-gray-700">Less than 60: Silver mania</span>
+                  <span class="text-xs text-red-600 font-semibold">Speculative excess</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-200 bg-amber-50">
+                  <span class="text-sm font-semibold text-amber-800">60-65: Current range</span>
+                  <span class="text-xs text-amber-600 font-semibold">Silver leading</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                  <span class="text-sm text-gray-700">65-70: Transition</span>
+                  <span class="text-xs text-yellow-600 font-semibold">Rotation to gold</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                  <span class="text-sm text-gray-700">Greater than 70: Gold safety</span>
+                  <span class="text-xs text-red-600 font-semibold">Recession fear</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-6">VIX/S&P Ratio — Fear Returning</h4>
+
+              <div class="text-center mb-6">
+                <div class="text-4xl font-bold text-amber-600 mb-2">0.00250</div>
+                <div class="text-sm text-gray-600">Current Ratio Level</div>
+                <div class="text-xs text-gray-500 mt-1">17.45 VIX / 6,985 S&P</div>
+              </div>
+
+              <div class="space-y-3">
+                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                  <span class="text-sm text-gray-700">Yesterday: 0.00219</span>
+                  <span class="text-xs text-green-600 font-semibold">Complacency</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-200 bg-amber-50">
+                  <span class="text-sm font-semibold text-amber-800">Current: 0.00250</span>
+                  <span class="text-xs text-amber-600 font-semibold">Normalizing</span>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                  <span class="text-sm text-gray-700">Event risk: 0.0028+</span>
+                  <span class="text-xs text-yellow-600 font-semibold">12% expansion</span>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                  <span class="text-sm text-gray-700">Panic: 0.0035+</span>
+                  <span class="text-xs text-red-600 font-semibold">40% expansion</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-chart-line mr-2"></i>Ratio Behavior Analysis
+            </h4>
+            <p class="text-amber-700">
+              The <span class="insight-highlight">Gold/Silver ratio climbing to 62.2</span> indicates silver's momentum is fading faster than gold's—typical of profit-taking in speculative metals. <span class="insight-highlight">VIX/S&P rising to 0.00250</span> shows the market is pricing event risk into today's retail sales, ending yesterday's complacency.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 5: Key Levels -->
+      <section id="key-levels" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">5. Key Levels for Tuesday</h2>
+
+          <div class="grid-3 mb-8">
+            <div class="chart-container">
+              <h4 class="serif text-lg font-semibold text-gray-800 mb-4">E-mini S&P (ESH6)</h4>
+              <div class="text-center mb-4">
+                <div class="text-2xl font-bold text-blue-600">6,985.25</div>
+                <div class="text-xs text-gray-500">Current Price</div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-green-600 font-medium">7,020</span>
+                  <span class="text-xs text-gray-500">Breakout target</span>
+                </div>
+                <div class="flex justify-between bg-red-50 p-2 rounded">
+                  <span class="text-red-600 font-bold">7,000</span>
+                  <span class="text-xs text-red-600">Psychological wall</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>6,995</span>
+                  <span class="text-xs text-gray-500">Overnight high</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>6,985</span>
+                  <span class="text-xs text-gray-500">Current</span>
+                </div>
+                <div class="flex justify-between bg-orange-50 p-2 rounded">
+                  <span class="text-orange-600 font-bold">6,970</span>
+                  <span class="text-xs text-orange-600">Critical support</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <h4 class="serif text-lg font-semibold text-gray-800 mb-4">Gold (GCJ6)</h4>
+              <div class="text-center mb-4">
+                <div class="text-2xl font-bold text-yellow-600">$5,075.90</div>
+                <div class="text-xs text-gray-500">Current Price</div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-green-600 font-medium">$5,120</span>
+                  <span class="text-xs text-gray-500">Breakout target</span>
+                </div>
+                <div class="flex justify-between bg-red-50 p-2 rounded">
+                  <span class="text-red-600 font-bold">$5,100</span>
+                  <span class="text-xs text-red-600">Overnight rejection</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>$5,075</span>
+                  <span class="text-xs text-gray-500">Current</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>$5,050</span>
+                  <span class="text-xs text-gray-500">Yesterday's close</span>
+                </div>
+                <div class="flex justify-between bg-orange-50 p-2 rounded">
+                  <span class="text-orange-600 font-bold">$5,030</span>
+                  <span class="text-xs text-orange-600">Critical support</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-container">
+              <h4 class="serif text-lg font-semibold text-gray-800 mb-4">Silver (SIH6)</h4>
+              <div class="text-center mb-4">
+                <div class="text-2xl font-bold text-slate-600">$81.58</div>
+                <div class="text-xs text-gray-500">Current Price</div>
+              </div>
+              <div class="space-y-2 text-sm">
+                <div class="flex justify-between">
+                  <span class="text-green-600 font-medium">$83.75</span>
+                  <span class="text-xs text-gray-500">Overnight high</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>$82.50</span>
+                  <span class="text-xs text-gray-500">Resistance</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>$81.58</span>
+                  <span class="text-xs text-gray-500">Current</span>
+                </div>
+                <div class="flex justify-between bg-orange-50 p-2 rounded">
+                  <span class="text-orange-600 font-bold">$80.50</span>
+                  <span class="text-xs text-orange-600">Critical support</span>
+                </div>
+                <div class="flex justify-between bg-red-50 p-2 rounded">
+                  <span class="text-red-600 font-bold">$80.00</span>
+                  <span class="text-xs text-red-600">Liquidation trigger</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-900 text-white rounded-lg p-6">
+            <h4 class="serif text-xl font-semibold mb-4">
+              <i class="fas fa-balance-scale mr-2 text-amber-400"></i>VIX Level Watch
+            </h4>
+            <div class="grid-2 gap-4">
+              <div>
+                <div class="text-sm font-semibold text-slate-200 mb-2">Current: 17.45</div>
+                <div class="text-xs text-slate-300">Waking from complacency</div>
+                <div class="text-xs text-slate-300">Pricing event risk</div>
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-amber-200 mb-2">Critical: 18.50</div>
+                <div class="text-xs text-slate-300">Breaks 20-day range</div>
+                <div class="text-xs text-slate-300">Signals vol expansion</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 6: Fed Speak Today -->
+      <section id="fed-speak" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">6. Fed Speak Today: Secondary Catalyst</h2>
+
+          <div class="grid-2 mb-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">
+                <i class="fas fa-user-tie mr-2 text-blue-600"></i>12:00 PM ET — Hammack
+              </h4>
+              <div class="text-sm text-gray-600 mb-4">Cleveland Fed President</div>
+              <p class="text-gray-700 mb-4">
+                Focus on <span class="insight-highlight">financial stability and banking conditions</span>. Less market-moving than Waller but could provide color on credit conditions.
+              </p>
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                <div class="text-xs font-semibold text-blue-800">Watch For</div>
+                <div class="text-xs text-blue-700">Comments on regional bank stress or CRE exposure</div>
+              </div>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">
+                <i class="fas fa-user-tie mr-2 text-purple-600"></i>1:00 PM ET — Logan
+              </h4>
+              <div class="text-sm text-gray-600 mb-4">Dallas Fed President</div>
+              <p class="text-gray-700 mb-4">
+                Focus on <span class="insight-highlight">energy markets and inflation expectations</span>. More relevant for commodity traders given Dallas Fed's energy expertise.
+              </p>
+              <div class="bg-purple-50 border border-purple-200 rounded-lg p-3">
+                <div class="text-xs font-semibold text-purple-800">Watch For</div>
+                <div class="text-xs text-purple-700">Comments on energy inflation or supply chain</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+            <h4 class="serif text-xl font-semibold text-gray-800 mb-4">Fed Speak Context</h4>
+            <p class="text-gray-700 leading-relaxed">
+              Today's speakers are <span class="insight-highlight">secondary to the 8:30 AM retail sales data</span>. However, if retail sales surprises, their comments could either amplify or dampen the market reaction. Logan's energy focus makes her particularly relevant for gold/silver positioning.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 7: Trade Setups -->
+      <section id="trade-setups" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">7. Trade Setups for Tuesday</h2>
+
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-8">
+            <h4 class="font-semibold text-amber-800 mb-2">
+              <i class="fas fa-compass mr-2"></i>Directional Bias: Range-Bound with Event Risk
+            </h4>
+            <p class="text-amber-700 leading-relaxed">
+              The directional bias is <span class="insight-highlight">neutral into 8:30 AM data, then reactive</span>. Silver showing fatigue at highs, S&P stalled at resistance, VIX normalizing. Structure trades for range expansion post-data.
+            </p>
+          </div>
+
+          <div class="chart-container">
+            <h4 class="serif text-xl font-semibold text-gray-800 mb-6">Specific Plays: Structured for Volatility</h4>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                  <tr>
+                    <th class="px-4 py-3 text-left font-semibold">Play</th>
+                    <th class="px-4 py-3 text-center font-semibold">Entry</th>
+                    <th class="px-4 py-3 text-center font-semibold">Stop</th>
+                    <th class="px-4 py-3 text-center font-semibold">Target</th>
+                    <th class="px-4 py-3 text-center font-semibold">R:R</th>
+                    <th class="px-4 py-3 text-left font-semibold">Rationale</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-slate-600">Short Silver</td>
+                    <td class="px-4 py-3 text-center font-mono">Less than $82.00</td>
+                    <td class="px-4 py-3 text-center font-mono text-red-600">$83.00</td>
+                    <td class="px-4 py-3 text-center font-mono text-green-600">$80.50</td>
+                    <td class="px-4 py-3 text-center font-semibold text-green-600">1.5:1</td>
+                    <td class="px-4 py-3 text-gray-600">Momentum fading; $83.75 rejection</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50 bg-yellow-50">
+                    <td class="px-4 py-3 font-medium text-yellow-600">ES Straddle</td>
+                    <td class="px-4 py-3 text-center font-mono">6,985</td>
+                    <td class="px-4 py-3 text-center text-gray-400">—</td>
+                    <td class="px-4 py-3 text-center font-mono text-green-600">7,020/6,950</td>
+                    <td class="px-4 py-3 text-center font-semibold text-green-600">2:1</td>
+                    <td class="px-4 py-3 text-gray-600">Retail sales binary event; vol cheap</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-yellow-600">Gold Long</td>
+                    <td class="px-4 py-3 text-center font-mono">Greater than $5,070</td>
+                    <td class="px-4 py-3 text-center font-mono text-red-600">$5,030</td>
+                    <td class="px-4 py-3 text-center font-mono text-green-600">$5,120</td>
+                    <td class="px-4 py-3 text-center font-semibold text-green-600">1.25:1</td>
+                    <td class="px-4 py-3 text-gray-600">Safe-haven bid if retail sales weak</td>
+                  </tr>
+                  <tr class="hover:bg-gray-50">
+                    <td class="px-4 py-3 font-medium text-purple-600">VIX Call</td>
+                    <td class="px-4 py-3 text-center font-mono">17.50</td>
+                    <td class="px-4 py-3 text-center font-mono text-red-600">16.50</td>
+                    <td class="px-4 py-3 text-center font-mono text-green-600">19/20</td>
+                    <td class="px-4 py-3 text-center font-semibold text-green-600">2.5:1</td>
+                    <td class="px-4 py-3 text-gray-600">Event vol underpriced; data risk</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="grid-2 mt-8">
+            <div class="bg-white border border-gray-200 rounded-lg p-6">
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">Risk Management</h4>
+              <p class="text-gray-700 mb-4">
+                VIX at 17.45 is <span class="insight-highlight">no longer cheap</span> but still underpricing event risk. Theta decay accelerates post-8:30 AM if data is inline.
+              </p>
+              <div class="text-sm text-gray-600">
+                <div class="font-semibold mb-2">Position Sizing:</div>
+                <ul class="space-y-1">
+                  <li>• Reduce size 50% into data release</li>
+                  <li>• Use binary options for pure event plays</li>
+                  <li>• Hedge ES longs with VIX calls (delta neutral)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">Post-Data Strategy</h4>
+              <h5 class="font-semibold text-green-800 mb-2">If Retail Sales Less than 0%</h5>
+              <p class="text-gray-700 mb-3">
+                <span class="insight-highlight">Buy Gold, Buy Silver, Fade ES initial drop</span>. Recession fear spike is buying opportunity.
+              </p>
+              <h5 class="font-semibold text-red-800 mb-2">If Retail Sales Greater than +0.3%</h5>
+              <p class="text-gray-700">
+                <span class="insight-highlight">Sell Commodities, Sell VIX, Buy Dollar</span>. Hawkish Fed fear pressures metals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 8: Scenario Matrix -->
+      <section id="scenario-matrix" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">8. Scenario Matrix (Data-Driven)</h2>
+
+          <div class="chart-container">
+            <h4 class="serif text-xl font-semibold text-gray-800 mb-6">Retail Sales Outcome Flow</h4>
+            <div class="mermaid-container">
+              <div class="mermaid-controls">
+                <button class="mermaid-control-btn zoom-in" title="放大">
+                  <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="mermaid-control-btn zoom-out" title="缩小">
+                  <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="mermaid-control-btn reset-zoom" title="重置">
+                  <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+                <button class="mermaid-control-btn fullscreen" title="全屏查看">
+                  <i class="fas fa-expand"></i>
+                </button>
+              </div>
+              <div class="mermaid">
+flowchart TD
+    A["8:30 AM Retail Sales"] --> B{"Core Print"}
+    
+    B -->|Weak| C["Recession Fear"]
+    B -->|Soft Landing| D["Goldilocks"]
+    B -->|Strong| E["Hawkish Fear"]
+    
+    C --> F["Gold to 5120<br/>Silver to 83<br/>ES to 6950 then rally"]
+    D --> G["Gold to 5080<br/>Silver to 82<br/>ES to 7000 grind"]
+    E --> H["Gold to 5050<br/>Silver to 80<br/>ES to 7000 rejection"]
+    
+    F --> I["VIX Spike 18-19<br/>Dollar drops<br/>Bonds rally"]
+    G --> J["VIX stable 17<br/>Dollar flat<br/>Range-bound"]
+    H --> K["VIX spike then fade<br/>Dollar rallies<br/>Yields rise"]
+    
+    I --> L["Fed Cut Bets Increase<br/>Buy dips"]
+    J --> M["Wait for CPI Tomorrow<br/>Reduce size"]
+    K --> N["Fed Pause Extended<br/>Sell commodities"]
+    
+    style A fill:#e1f5fe,stroke:#1565c0,stroke-width:2px
+    style B fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style C fill:#ffebee,stroke:#c62828,stroke-width:2px
+    style D fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    style E fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style F fill:#ffebee,stroke:#c62828,stroke-width:2px
+    style G fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    style H fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style I fill:#ffebee,stroke:#c62828,stroke-width:2px
+    style J fill:#e8f5e8,stroke:#2e7d32,stroke-width:2px
+    style K fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style L fill:#e1f5fe,stroke:#1565c0,stroke-width:2px
+    style M fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px
+    style N fill:#fff8e1,stroke:#ff8f00,stroke-width:2px
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <h4 class="serif text-xl font-semibold text-gray-800 mb-6">Outcome-Dependent Levels</h4>
+
+            <div class="grid-2 gap-6">
+              <div class="space-y-4">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-red-800 mb-3">Weak Data (Less than -0.2%)</h5>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                      <span class="text-red-700">Silver:</span>
+                      <span class="text-red-800 font-semibold">to $83.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-red-700">Gold:</span>
+                      <span class="text-red-800 font-semibold">to $5,120</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-red-700">ES:</span>
+                      <span class="text-red-800 font-semibold">to 6,950 then 7,010</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-red-700">VIX:</span>
+                      <span class="text-red-800 font-semibold">to 18.50</span>
+                    </div>
+                  </div>
+                  <div class="mt-3 text-xs text-red-700">Trade: Buy metals dip, fade ES drop</div>
+                </div>
+
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-green-800 mb-3">Soft Landing (0.0% to +0.2%)</h5>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                      <span class="text-green-700">Silver:</span>
+                      <span class="text-green-800 font-semibold">to $82.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-green-700">Gold:</span>
+                      <span class="text-green-800 font-semibold">to $5,080</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-green-700">ES:</span>
+                      <span class="text-green-800 font-semibold">to 7,000 grind</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-green-700">VIX:</span>
+                      <span class="text-green-800 font-semibold">to 17.00</span>
+                    </div>
+                  </div>
+                  <div class="mt-3 text-xs text-green-700">Trade: Range-bound, sell vol</div>
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-amber-800 mb-3">Strong Data (Greater than +0.3%)</h5>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                      <span class="text-amber-700">Silver:</span>
+                      <span class="text-amber-800 font-semibold">to $80.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-amber-700">Gold:</span>
+                      <span class="text-amber-800 font-semibold">to $5,050</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-amber-700">ES:</span>
+                      <span class="text-amber-800 font-semibold">to 7,000 rejection</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-amber-700">VIX:</span>
+                      <span class="text-amber-800 font-semibold">to 16.50 then 18</span>
+                    </div>
+                  </div>
+                  <div class="mt-3 text-xs text-amber-700">Trade: Sell commodities, buy vol</div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4">
+                  <h5 class="font-semibold text-slate-800 mb-3">Key Risk Levels</h5>
+                  <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                      <span class="text-slate-700">Silver support:</span>
+                      <span class="text-slate-800 font-semibold">$80.50</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-slate-700">Gold support:</span>
+                      <span class="text-slate-800 font-semibold">$5,030</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-slate-700">ES support:</span>
+                      <span class="text-slate-800 font-semibold">6,970</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-slate-700">VIX support:</span>
+                      <span class="text-slate-800 font-semibold">16.50</span>
+                    </div>
+                  </div>
+                  <div class="mt-3 text-xs text-slate-700">Stops: Break below = exit</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border-l-4 border-slate-400 p-6 rounded-r-lg mt-8">
+            <h4 class="font-semibold text-slate-800 mb-2">
+              <i class="fas fa-lightbulb mr-2"></i>Scenario Analysis
+            </h4>
+            <p class="text-slate-700">
+              The <span class="insight-highlight">asymmetric setup favors weak data</span>—the market is positioned for soft landing (0.0% expected), making a negative surprise more impactful than a positive one. Silver's $80.50 level is the fulcrum: hold = dip buying, break = liquidation cascade.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Section 9: Bottom Line -->
+      <section id="bottom-line" class="container mx-auto px-8 py-12">
+        <div class="max-w-6xl">
+          <h2 class="serif text-4xl font-bold text-gray-900 mb-8">9. Bottom Line for Tuesday</h2>
+
+          <div class="grid-3 mb-8">
+            <div class="metric-card">
+              <div class="metric-value">62.2</div>
+              <div class="metric-label">Gold/Silver Ratio</div>
+              <div class="text-xs text-gray-600 mt-2">Silver cooling, not crashing</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value">0.00250</div>
+              <div class="metric-label">VIX/S&P Ratio</div>
+              <div class="text-xs text-gray-600 mt-2">Fear returning from complacency</div>
+            </div>
+            <div class="metric-card bg-amber-50">
+              <div class="metric-value text-amber-600">8:30 AM</div>
+              <div class="metric-label text-amber-700">Retail Sales</div>
+              <div class="text-xs text-amber-600 mt-2">The day's catalyst</div>
+            </div>
+          </div>
+
+          <div class="grid-2 gap-8 mb-8">
+            <div>
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">Core Thesis: Data-Dependent Pause</h4>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <span class="insight-highlight">Silver cooling from $83.75, holding $80.50. Gold rejected $5,100. S&P stalled at 7,000. VIX waking up at 17.45.</span> All markets waiting for 8:30 AM retail sales.
+              </p>
+              <p class="text-gray-700">
+                The technical structure shows fatigue—silver's momentum fading, gold's safe-haven bid insufficient, equities' breadth narrowing. But the trend remains intact until data breaks it.
+              </p>
+            </div>
+
+            <div>
+              <h4 class="serif text-xl font-semibold text-gray-800 mb-4">The Pivot: Retail Sales at 8:30 AM</h4>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <span class="insight-highlight">Flat expectations (0.0%) create binary outcomes.</span> Weak data = recession fear spike = buy metals, fade ES drop. Strong data = hawkish Fed fear = sell commodities.
+              </p>
+              <p class="text-gray-700">
+                The asymmetric risk favors weak data—market is positioned for soft landing, making negative surprise more impactful.
+              </p>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <h4 class="serif text-xl font-semibold text-gray-800 mb-6">Risk Management Framework</h4>
+
+            <div class="grid-3 gap-4 mb-6">
+              <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                <h5 class="font-semibold text-red-800 mb-2">
+                  <i class="fas fa-exclamation-triangle mr-2"></i>Primary Risk
+                </h5>
+                <div class="text-sm text-red-700">Silver breaks $80.50 on strong data</div>
+              </div>
+              <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h5 class="font-semibold text-blue-800 mb-2">
+                  <i class="fas fa-crosshairs mr-2"></i>Key Levels
+                </h5>
+                <div class="text-sm text-blue-700">
+                  Silver $80.50 / Gold $5,030
+                  <br/>
+                  ES 6,970 / VIX 18.50
+                </div>
+              </div>
+              <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                <h5 class="font-semibold text-green-800 mb-2">
+                  <i class="fas fa-shield-alt mr-2"></i>Hedge
+                </h5>
+                <div class="text-sm text-green-700">VIX calls or ES puts; size 25% of exposure</div>
+              </div>
+            </div>
+
+            <div class="bg-slate-900 text-white rounded-lg p-6">
+              <h5 class="serif text-lg font-semibold mb-4">
+                <i class="fas fa-balance-scale mr-2 text-amber-400"></i>Asymmetric Setup
+              </h5>
+              <p class="text-gray-200 leading-relaxed">
+                The setup is <span class="insight-highlight">asymmetric—weak data creates larger moves than strong data</span>. Position for range expansion post-8:30 AM. Use tight stops at Silver $80.50 and ES 6,970. The day belongs to reactive traders, not predictive ones.
+              </p>
+
+              <div class="grid-2 mt-6 gap-4">
+                <div>
+                  <div class="text-sm font-semibold text-green-300 mb-2">Weak Data Reward</div>
+                  <ul class="text-xs text-gray-300 space-y-1">
+                    <li>• Gold to $5,120 (+0.9%)</li>
+                    <li>• Silver to $83 (+1.7%)</li>
+                    <li>• ES dip then rally</li>
+                    <li>• VIX spike to 18-19</li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-red-300 mb-2">Strong Data Risk</div>
+                  <ul class="text-xs text-gray-300 space-y-1">
+                    <li>• Gold to $5,050 (-0.5%)</li>
+                    <li>• Silver to $80 (-2.0%)</li>
+                    <li>• ES rejection at 7,000</li>
+                    <li>• Dollar spike</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Final Summary Box -->
+          <div class="bg-gradient-to-r from-slate-900 to-amber-900 text-white rounded-lg p-8 mt-8">
+            <h3 class="serif text-2xl font-bold mb-4">
+              <i class="fas fa-key mr-2 text-amber-400"></i>The One Thing for Tuesday
+            </h3>
+            <p class="text-xl text-amber-100 leading-relaxed mb-4">
+              <span class="insight-highlight">Watch the 8:30 AM ET retail sales print</span>—the market's positioning for soft landing (0.0% expected) creates asymmetric risk where weak data triggers larger moves than strong data. Silver's $80.50 is the fulcrum.
+            </p>
+            <p class="text-amber-200">
+              Trade reactive, not predictive. Use tight stops. The day belongs to those who respond to data, not those who predict it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-8">
+          <div class="max-w-4xl">
+            <div class="grid-2 gap-8">
+              <div>
+                <h3 class="serif text-xl font-bold mb-4">Market Intelligence</h3>
+                <p class="text-gray-400 leading-relaxed">
+                  Professional-grade market analysis combining technical, fundamental, and sentiment indicators for institutional-caliber decision making.
+                </p>
+              </div>
+              <div>
+                <h3 class="serif text-xl font-bold mb-4">Key Metrics Summary</h3>
+                <div class="space-y-2 text-sm text-gray-300">
+                  <div class="flex justify-between">
+                    <span>Silver (SIH6):</span>
+                    <span class="font-mono">$81.58</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Gold (GCJ6):</span>
+                    <span class="font-mono">$5,075.90</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>E-mini S&P (ESH6):</span>
+                    <span class="font-mono">6,985.25</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>Gold/Silver Ratio:</span>
+                    <span class="font-mono">62.2</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>VIX/S&P Ratio:</span>
+                    <span class="font-mono">0.00250</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400 text-sm">
+              <p>Analysis based on market data as of February 10, 2026. All trading involves risk. Past performance does not guarantee future results.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+        // Initialize Mermaid with enhanced configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({ 
+                startOnLoad: true,
+                theme: 'base',
+                themeVariables: {
+                    primaryColor: '#ffffff',
+                    primaryTextColor: '#0f172a',
+                    primaryBorderColor: '#f59e0b',
+                    secondaryColor: '#f8fafc',
+                    secondaryTextColor: '#475569',
+                    secondaryBorderColor: '#fbbf24',
+                    tertiaryColor: '#fffbeb',
+                    tertiaryTextColor: '#92400e',
+                    tertiaryBorderColor: '#d97706',
+                    background: '#ffffff',
+                    mainBkg: '#ffffff',
+                    secondBkg: '#f8fafc',
+                    tertiaryBkg: '#fffbeb',
+                    textColor: '#0f172a',
+                    darkTextColor: '#ffffff',
+                    lineColor: '#475569',
+                    edgeLabelBackground: '#ffffff',
+                    c0: '#ffffff',
+                    c1: '#f8fafc',
+                    c2: '#fffbeb',
+                    c3: '#f0fdf4',
+                    c4: '#fef2f2',
+                    c5: '#faf5ff',
+                    c6: '#f0f9ff',
+                    c7: '#fffbeb',
+                    cScale0: '#0f172a',
+                    cScale1: '#475569',
+                    cScale2: '#92400e',
+                    cScale3: '#166534',
+                    cScale4: '#991b1b',
+                    cScale5: '#6b21a8',
+                    cScale6: '#075985',
+                    cScale7: '#b45309'
+                },
+                flowchart: {
+                    useMaxWidth: false,
+                    htmlLabels: true,
+                    curve: 'basis',
+                    padding: 20,
+                    nodeSpacing: 50,
+                    rankSpacing: 80,
+                    diagramPadding: 20
+                },
+                fontSize: 14,
+                fontFamily: 'Inter, sans-serif',
+                wrap: true,
+                securityLevel: 'loose'
+            });
+            
+            initializeMermaidControls();
+        });
+        
+        function initializeMermaidControls() {
+            const containers = document.querySelectorAll('.mermaid-container');
+
+            containers.forEach(container => {
+            const mermaidElement = container.querySelector('.mermaid');
+            let scale = 1;
+            let isDragging = false;
+            let startX, startY, translateX = 0, translateY = 0;
+            let isTouch = false;
+            let touchStartTime = 0;
+            let initialDistance = 0;
+            let initialScale = 1;
+            let isPinching = false;
+
+            const zoomInBtn = container.querySelector('.zoom-in');
+            const zoomOutBtn = container.querySelector('.zoom-out');
+            const resetBtn = container.querySelector('.reset-zoom');
+            const fullscreenBtn = container.querySelector('.fullscreen');
+
+            function updateTransform() {
+                mermaidElement.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+                if (scale > 1) {
+                container.classList.add('zoomed');
+                } else {
+                container.classList.remove('zoomed');
+                }
+                mermaidElement.style.cursor = isDragging ? 'grabbing' : 'grab';
+            }
+
+            if (zoomInBtn) {
+                zoomInBtn.addEventListener('click', () => {
+                scale = Math.min(scale * 1.25, 4);
+                updateTransform();
+                });
+            }
+
+            if (zoomOutBtn) {
+                zoomOutBtn.addEventListener('click', () => {
+                scale = Math.max(scale / 1.25, 0.3);
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                updateTransform();
+                });
+            }
+
+            if (fullscreenBtn) {
+                fullscreenBtn.addEventListener('click', () => {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+                });
+            }
+
+            mermaidElement.addEventListener('mousedown', (e) => {
+                if (isTouch) return;
+                isDragging = true;
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                mermaidElement.style.cursor = 'grabbing';
+                updateTransform();
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging && !isTouch) {
+                translateX = e.clientX - startX;
+                translateY = e.clientY - startY;
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            document.addEventListener('mouseleave', () => {
+                if (isDragging && !isTouch) {
+                isDragging = false;
+                mermaidElement.style.cursor = 'grab';
+                updateTransform();
+                }
+            });
+
+            function getTouchDistance(touch1, touch2) {
+                return Math.hypot(
+                touch2.clientX - touch1.clientX,
+                touch2.clientY - touch1.clientY
+                );
+            }
+
+            mermaidElement.addEventListener('touchstart', (e) => {
+                isTouch = true;
+                touchStartTime = Date.now();
+
+                if (e.touches.length === 1) {
+                isPinching = false;
+                isDragging = true;
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                } else if (e.touches.length === 2) {
+                isPinching = true;
+                isDragging = false;
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                initialDistance = getTouchDistance(touch1, touch2);
+                initialScale = scale;
+                }
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchmove', (e) => {
+                if (e.touches.length === 1 && isDragging && !isPinching) {
+                const touch = e.touches[0];
+                translateX = touch.clientX - startX;
+                translateY = touch.clientY - startY;
+                updateTransform();
+                } else if (e.touches.length === 2 && isPinching) {
+                const touch1 = e.touches[0];
+                const touch2 = e.touches[1];
+                const currentDistance = getTouchDistance(touch1, touch2);
+                if (initialDistance > 0) {
+                    const newScale = Math.min(Math.max(
+                    initialScale * (currentDistance / initialDistance),
+                    0.3
+                    ), 4);
+                    scale = newScale;
+                    updateTransform();
+                }
+                }
+                e.preventDefault();
+            }, { passive: false });
+
+            mermaidElement.addEventListener('touchend', (e) => {
+                if (e.touches.length === 0) {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+                setTimeout(() => {
+                    isTouch = false;
+                }, 100);
+                } else if (e.touches.length === 1 && isPinching) {
+                isPinching = false;
+                isDragging = true;
+                const touch = e.touches[0];
+                startX = touch.clientX - translateX;
+                startY = touch.clientY - translateY;
+                }
+                updateTransform();
+            });
+
+            mermaidElement.addEventListener('touchcancel', (e) => {
+                isDragging = false;
+                isPinching = false;
+                initialDistance = 0;
+                setTimeout(() => {
+                isTouch = false;
+                }, 100);
+                updateTransform();
+            });
+
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const rect = container.getBoundingClientRect();
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                const newScale = Math.min(Math.max(scale * delta, 0.3), 4);
+                if (newScale !== scale) {
+                const scaleDiff = newScale / scale;
+                translateX = translateX * scaleDiff;
+                translateY = translateY * scaleDiff;
+                scale = newScale;
+                if (scale <= 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+                updateTransform();
+                }
+            });
+
+            updateTransform();
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const tocLinks = document.querySelectorAll('.toc-link');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('.citation').forEach(citation => {
+            citation.addEventListener('click', function(e) {
+                e.preventDefault();
+                const citationText = this.textContent;
+                alert(`Citation: ${citationText}\n\nThis would link to the original data source or methodology documentation in a production environment.`);
+            });
+        });
+    </script>
+</body>
+</html>
